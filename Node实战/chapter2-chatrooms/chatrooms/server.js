@@ -25,7 +25,7 @@ var cache = {}; // cache是用来缓存文件内容的对象.
  */
 function send404(response) {
   // 设置响应头
-  response.writeHead(404, {'Content-Type': 'text/plain'});
+  response.writeHead(404, {'Content-Type': 'test/plain'});
   response.write('Error 404: resource not found.');
   response.end();
 }
