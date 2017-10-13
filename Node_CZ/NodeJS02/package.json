@@ -1,0 +1,23 @@
+{
+  "name": "nodejs02",
+  "version": "1.0.0",
+  "description": "node 学习第2天",
+  "main": "03_node_modules",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "date-time": "^2.1.0",
+    "temp": "^0.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "学习"
+  ],
+  "author": "rain",
+  "license": "ISC"
+}
