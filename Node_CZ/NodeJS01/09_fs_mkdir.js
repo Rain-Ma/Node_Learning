@@ -40,6 +40,7 @@ var server = http.createServer(function (req, res) {
 
 
         // 当执行第一次执行 fs.stat('./album/' + theFile, function (err, stats) 时, theFile这个变量存储的是 ccc, 之前的aaa已经被覆盖.
+        // 解决这个问题: 将异步变为同步.
 
       });
     }
