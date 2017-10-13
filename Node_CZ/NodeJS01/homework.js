@@ -33,10 +33,10 @@ var server = http.createServer(function (req, res) {
     }
 
     // 获取mime类型
-    var mime = getMIME(extname);
-
-    res.writeHead(200, {'Content-Type': mime});
-    res.end(data);
+    getMIME(extname, function (mime) {
+      res.writeHead(200, {'Content-Type': mime});
+      res.end(data);
+    });
 
   });
 
@@ -52,7 +52,7 @@ server.listen(3000, function () {
  * 根据后缀名, 从mime.json文件中获取数据, 并返回对应的MIME类型.
  * @param extname
  */
-function getMIME(extname) {
+function getMIME(extname, callback) {
 
   // 从mime.json中读取数据
   // fs.readFile('./mime.json', function (err, data) {
@@ -60,11 +60,18 @@ function getMIME(extname) {
   //   return JSON.parse(data)[extname]; // 由于回调函数的异步, 不能直接在这里返回MIME类型.
   // })
 
-  var data = fs.readFileSync('./mime.json');
-  if (!data) {
-    throw data;
-  }
-  return JSON.parse(data)[extname];
+  // 自己的做法
+  // var data = fs.readFileSync('./mime.json');
+  // if (!data) {
+  //   throw data;
+  // }
+  // return JSON.parse(data)[extname];
+
+  // 视频中的做法
+  fs.readFile('./mime.json', function (err, data) {
+    console.log(data); // data是Buffer 类型, 需要JSON.parse转换为对象.
+    callback(JSON.parse(data)[extname]);
+  })
 
 }
 
