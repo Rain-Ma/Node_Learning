@@ -7,6 +7,8 @@
 var http = require('http');
 var queryString = require('querystring');
 var formidable = require('formidable');
+var fs = require('fs');
+var path = require('path');
 
 var server = http.createServer(function (req, res) {
 
@@ -27,16 +29,16 @@ var server = http.createServer(function (req, res) {
       console.log(fields);
       console.log(files);
 
+      // 执行改名
+      var oldpath = __dirname + '/' + files.tupian.path;
+      var newName = __dirname + '/uploads/' + Math.floor(Math.random() * 10000000) + path.extname(files.tupian.name);
 
-      res.writeHead(200, {'Content-Type': 'text/plain'});
-      res.end('success');
-
+      fs.rename(oldpath, newName, function (err) {
+        if (err) throw Error('文件改名失败');
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.end('success');
+      });
     })
-
-
-
-
-
 
   }
 });
