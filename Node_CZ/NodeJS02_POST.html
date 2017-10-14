@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form action="http://localhost:3000/dopost" method="post">
+<form action="http://localhost:3000/dopost" method="post" enctype="multipart/form-data">
   <p>
     姓名: <input type="text" name="name">
   </p>
@@ -15,6 +15,11 @@
     性别: <input type="text" name="sex" value="男">
           <input typeof="text" name="sex" value="女">
   </p>
+  
+  <p>
+    <input type="file" name="tupian">
+  </p>
+  
   <p>
     <input type="submit">
   </p>
