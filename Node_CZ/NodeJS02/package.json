@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "date-time": "^2.1.0",
+    "ejs": "^2.5.7",
     "temp": "^0.0.1"
   },
   "devDependencies": {},
