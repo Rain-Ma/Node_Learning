@@ -1,0 +1,18 @@
+{
+  "name": "nodejs03",
+  "version": "1.0.0",
+  "description": "node.js 学习第3天",
+  "main": "01_express01.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Rain",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2"
+  }
+}
