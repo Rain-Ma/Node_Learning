@@ -12,17 +12,17 @@ var server = http.createServer(function (req, res) {
     return;
   }
   // 异步创建文件夹
-  // fs.mkdir("./album/aaa");
+  // fs.mkdir("./album.ejs/aaa");
 
   // stat检测文件状态
-  fs.stat('./album/aaa', function (err, stats) {
+  fs.stat('./album.ejs/aaa', function (err, stats) {
     // 检测aaa是不是一个文件夹
     console.log(stats.isDirectory());
   });
 
   var wenjianjia = [];
   // 读取文件夹中的内容.
-  fs.readdir('./album', function (err, files) {
+  fs.readdir('./album.ejs', function (err, files) {
     console.log(files); // 输出: [ 'aaa', 'bbb' ]
     // files是保存文件名的数组, 表示文件夹中的所有文件和文件夹.
 
@@ -31,7 +31,7 @@ var server = http.createServer(function (req, res) {
     for (var i = 0; i < files.length; i++) {
       var theFile = files[i]; // thefile只是一个字符串.
       console.log('i, theFile', i, theFile);
-      fs.stat('./album/' + theFile, function (err, stats) {
+      fs.stat('./album.ejs/' + theFile, function (err, stats) {
 
         if (stats.isDirectory()) {
           wenjianjia.push(theFile);
@@ -39,7 +39,7 @@ var server = http.createServer(function (req, res) {
         console.log('for fs.stat内部: 文件夹: ', wenjianjia); // 输出:  [ 'ccc', 'ccc' ]
 
 
-        // 当执行第一次执行 fs.stat('./album/' + theFile, function (err, stats) 时, theFile这个变量存储的是 ccc, 之前的aaa已经被覆盖.
+        // 当执行第一次执行 fs.stat('./album.ejs/' + theFile, function (err, stats) 时, theFile这个变量存储的是 ccc, 之前的aaa已经被覆盖.
         // 解决这个问题: 将异步变为同步.
 
       });
