@@ -13,11 +13,9 @@ app.get('/images', function (req, res) {
 
 // express 会自带一个404的处理页面.
 // 也可以自定义404
-// 会自动识别err参数, 如果有, 那么这个函数可以捕获err
-app.use(function (err, req, res) { // TODO: 视频中出现了问题, 没有解决.
-  if (err) {    res.send('没有这个页面');
-  }
-})
+app.use(function (req, res) {
+  res.send('没有这个页面'); // 自定义404
+});
 
 
 app.listen(3000, function () {
