@@ -31,6 +31,14 @@ app.get('/', router.showIndex);
 app.get('/:albumName', router.showAlbum);
 
 
+// 404
+app.use(function (req, res) {
+  res.render('err', {
+    'baseURL': req.pathname
+  });
+});
+
+
 app.listen(3000, function () {
   console.log('监听端口号: 3000');
 });
