@@ -18,7 +18,9 @@ app.set('view engine', 'ejs');
 
 // 为了模板中不那么麻烦(除了图片的路径是绝对地址), 去掉'/static'
 app.use(express.static('./public')); // 提供静态服务
+app.use(express.static('./uploads'));
 
+// 首页
 app.get('/', router.showIndex);
 
 // app.get('/admin', function (req, res) {
