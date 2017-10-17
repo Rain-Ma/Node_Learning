@@ -1,6 +1,6 @@
 
 exports.showIndex = function (req, res) {
-  res.send('我是首页');
+  res.render('index', {albums: ['aa', 'bb', 'cc']});
 };
 
 exports.showAlbum = function (req, res) {

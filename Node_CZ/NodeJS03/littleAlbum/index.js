@@ -12,8 +12,12 @@ app.set('view engine', 'ejs');
 // 设置中间件
 
 // app.use(express.static('./public')); // 提供静态服务
-app.use('/static',express.static('./public')); // 提供静态服务
 
+// 由于额外添加了/static, 所以在模板(.html)中的所有路径都需要添加'/static', 否则访问不到.
+// app.use('/static',express.static('./public')); // 提供静态服务
+
+// 为了模板中不那么麻烦(除了图片的路径是绝对地址), 去掉'/static'
+app.use(express.static('./public')); // 提供静态服务
 
 app.get('/', router.showIndex);
 
