@@ -101,8 +101,6 @@ exports.paging = function (collectionName, json, args, callback) {
 /**
  * 结合 3 和 4
  */
-
-
 exports.findDoc = function (collectionName, json, C, D) {
   var callback, skipNumber, limit;
 
@@ -125,12 +123,46 @@ exports.findDoc = function (collectionName, json, C, D) {
     var cur = db.collection(collectionName).find(json).skip(skipNumber).limit(limit);
     cur.toArray(function (err, docs) {
       callback(err, docs);
+      db.close();
     })
   });
 
+};
+
+/**
+ * 5. 删除数据
+ * @param collectionName
+ * @param json
+ * @param callback
+ */
+exports.deleteMany = function (collectionName, json, callback) {
+
+  _connectDB(function (err, db) {
+    db.collection(collectionName).deleteMany(json, function (err, results) {
+      callback(err, results);
+      db.close();
+    })
+  });
+
+};
+
+/**
+ * 6. 修改数据.
+ * @param collectionName
+ * @param oldJSON
+ * @param newJSON
+ * @param callback
+ */
+exports.updateMany = function (collectionName, oldJSON, newJSON, callback) {
+
+  _connectDB(function (err, db) {
+    db.collection(collectionName).updateMany(oldJSON, newJSON, function (err, result) {
+      callback(err, result);
+      db.close();
+    })
+  })
+
 }
-
-
 
 
 
