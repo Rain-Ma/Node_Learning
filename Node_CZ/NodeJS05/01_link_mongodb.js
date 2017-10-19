@@ -3,6 +3,8 @@ var MongoClient = require('mongodb').MongoClient;
 
 var app = express();
 
+var id = 0;
+
 app.get('/', function (req, res) {
 
   // url是数据库地址, /表示数据库
@@ -20,8 +22,9 @@ app.get('/', function (req, res) {
 
     // 插入数据
     db.collection('student').insertOne({
+      'stuID': ++id,
       "name": 'Tom',
-      'age': 14
+      'age': parseInt(Math.random() * 100)
     }, function (err, result) {
       console.log(result);
       res.send(result);
