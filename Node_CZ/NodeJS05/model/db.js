@@ -3,6 +3,7 @@
  */
 
 var MongoClient = require('mongodb').MongoClient;
+var config = require('./config');
 
 
 /**
@@ -12,7 +13,7 @@ var MongoClient = require('mongodb').MongoClient;
  */
 function _connectDB(callback) {
 
-  var url = 'mongodb://localhost:27017/haha';
+  var url = config.dbURL;
   // 连接数据库
   MongoClient.connect(url, function (err, db) {
     if (err) {
